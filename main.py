@@ -1,8 +1,10 @@
 from setup import *
 
-def main():
-	subreddit = reddit.subreddit("wallstreetbets")
 
+
+def main():
+	#subreddit = reddit.subreddit("wallstreetbets")
+	reddit, subreddit = setup()
 	print(subreddit)
 
 
