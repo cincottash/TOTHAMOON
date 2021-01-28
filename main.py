@@ -1,9 +1,9 @@
 from setup import *
 
 
-
 def main():
-	#subreddit = reddit.subreddit("wallstreetbets")
+
+	#run each indicator for a given stock
 	reddit, subreddit = setup()
 	print(subreddit)
 
