@@ -1,10 +1,12 @@
 from scraperSetup import *
 
+
 def scraperRun():
-	reddit, tickerScores, invalidChars = setup()
+	reddit, tickerScores, invalidChars, timePeriod = setup()
 	
 	#get top 1000 submissions
-	submissions = reddit.subreddit('wallstreetbets').top("week", limit=1000)
+	print("Fetching data, this may take a while...")
+	submissions = reddit.subreddit('wallstreetbets').top(timePeriod, limit=1000)
 
 	#loop through each submission title/body and keep track of all the DIFFERENT tickers found
 	for submission in submissions:

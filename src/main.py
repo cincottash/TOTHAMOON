@@ -41,7 +41,7 @@ def main():
 		indicatorType = getIndicator()
 
 		if(indicatorType == 1):
-			print("Running WSB analyzer, this may take a while...\n")
+			print("Running WSB analyzer\n")
 			scraperRun()
 		elif(indicatorType == 2):
 			print("Running MACD...\n")

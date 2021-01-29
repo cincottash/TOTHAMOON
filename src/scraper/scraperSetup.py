@@ -3,7 +3,7 @@ import prawcore
 import sys
 import requests
 from bs4 import BeautifulSoup
-
+import time
 def setup():
 
 	reddit = praw.Reddit(client_id='3dVFOGnTpVY0PA', \
@@ -30,5 +30,17 @@ def setup():
 	#list of chars to filter out from words
 	invalidChars = ["$", ",", "."]
 
+	validInput = False
+	validPeriods = ["all", "hour", "year", "month", "day", "week"]
+	while(not validInput):
+		try:
+			timePeriod = input("Enter a time period\n").lower()
+			if(timePeriod not in validPeriods):
+				raise ValueError
+			else:
+				validInput = True
+		except ValueError:
+			print("Error, period must be one of: all, hour, year, month, day, week\n")
+			time.sleep(1)
 
-	return reddit, tickerScores, invalidChars
+	return reddit, tickerScores, invalidChars, timePeriod
