@@ -4,7 +4,6 @@ client = pyEX.Client(api_token='pk_93cbcaa185544c878c2ad10ad4ad226a' , version='
 
 def initializeStockData(tracker):
 
-	# chart(timeframe='1m', date=None, token='', version='', filter='')
 	#Historical price/volume data, daily and intraday NOT AS PANDAS DATEFRAME Remember no weekends!!!
 	stockData = client.chart(timeframe = "1y", symbol = tracker)
 

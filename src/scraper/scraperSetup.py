@@ -4,7 +4,7 @@ import sys
 import requests
 from bs4 import BeautifulSoup
 import time
-def setup():
+def scraperSetup():
 
 	reddit = praw.Reddit(client_id='3dVFOGnTpVY0PA', \
 	                     client_secret='zjy3v8R1VzylnT0g8nYhJJFiThAcuA', \
@@ -32,6 +32,7 @@ def setup():
 
 	validInput = False
 	validPeriods = ["all", "hour", "year", "month", "day", "week"]
+	
 	while(not validInput):
 		try:
 			timePeriod = input("Enter a time period\n").lower()

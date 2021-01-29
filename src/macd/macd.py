@@ -3,10 +3,10 @@ from initialize import *
 
 import os.path
 from os import path
-from setup import *
+from macdSetup import *
 
 def macdRun():
-	tracker, shortPeriod, longPeriod = argParse()
+	tracker, shortPeriod, longPeriod = macdSetup()
 
 	stockData, timeStamps, closePrices = initializeStockData(tracker)
 

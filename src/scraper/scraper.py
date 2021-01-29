@@ -2,7 +2,7 @@ from scraperSetup import *
 
 
 def scraperRun():
-	reddit, tickerScores, invalidChars, timePeriod = setup()
+	reddit, tickerScores, invalidChars, timePeriod = scraperSetup()
 	
 	#get top 1000 submissions
 	print("Fetching data, this may take a while...")
