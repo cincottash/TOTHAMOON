@@ -10,7 +10,7 @@ def macdRun():
 
 	stockData, timeStamps, closePrices = initializeStockData(tracker)
 
-	longEMA = initializeEMA(stockData, longPeriod)
-	shortEMA = initializeEMA(stockData, shortPeriod)
+	longEMA = calculateEMA(stockData, longPeriod)
+	shortEMA = calculateEMA(stockData, shortPeriod)
 
 	plotData(timeStamps, closePrices, longEMA, shortEMA, longPeriod, shortPeriod, str(tracker))

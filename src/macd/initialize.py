@@ -33,7 +33,7 @@ def initializeStockData(tracker):
 
 
 #Do EMA calculations with the initial data
-def initializeEMA(stockData, periodLen):
+def calculateEMA(stockData, periodLen):
 	EMA = []
 
 	openPrices = []
@@ -46,10 +46,11 @@ def initializeEMA(stockData, periodLen):
 		if i > periodLen - 1:
 			break
 		seedValue += price
+		#EMA.append(0)
 
 	seedValue /= periodLen
-
-	for j, price in enumerate(openPrices[periodLen:]):
+	#print(len(openPrices))
+	for j, price in enumerate(openPrices[:]):
 		#Use seed value for the first ema calculation
 		if(j == 0):
 			newEMA = (price * (2/(periodLen + 1))) + (seedValue * (1 - (2/(periodLen + 1))))
@@ -57,4 +58,6 @@ def initializeEMA(stockData, periodLen):
 		else:
 			newEMA = (price * (2/(periodLen + 1))) + (EMA[j - 1] * (1 - (2/(periodLen + 1))))
 			EMA.append(newEMA)
+		print(j)
+	#print(len(EMA))
 	return EMA

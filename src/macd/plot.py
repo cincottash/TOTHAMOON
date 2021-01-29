@@ -1,26 +1,15 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def plotData(timeStamps, closePrices, longEMA, shortEMA, longPeriod, shortPeriod, plotTitle):
+def plotData(timeStamps, openPrices, longEMA, shortEMA, longPeriod, shortPeriod, plotTitle):
 
 	signalLines = []
 
-	#Spin up period equal to the length of the period
-	count = 0
-	while(count < longPeriod):
-		longEMA.insert(0, None)
-		count += 1
-
-	count = 0
-	while(count < shortPeriod):
-		shortEMA.insert(0, None)
-		count += 1
-
 	timeStamps = np.array(timeStamps)
-	closePrices = np.array(closePrices)
+	openPrices = np.array(openPrices)
 	shortEMA = np.array(shortEMA)
 	longEMA = np.array(longEMA)
-	plt.plot(timeStamps, closePrices)
+	plt.plot(timeStamps, openPrices)
 	plt.plot(timeStamps, shortEMA)
 	plt.plot(timeStamps, longEMA)
 
