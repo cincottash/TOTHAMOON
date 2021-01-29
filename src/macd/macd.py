@@ -1,6 +1,5 @@
 from plot import *
 from initialize import *
-from update import *
 
 import os.path
 from os import path

@@ -12,7 +12,7 @@ def initializeStockData(tracker):
 	stockData.reverse()
 
 	timeStamps = []
-	closePrices = []
+	openPrices = []
 
 	for stock in stockData[len(stockData):]:
 		stockData.remove(stock)
@@ -27,29 +27,29 @@ def initializeStockData(tracker):
 		#print(stock["date"])
 		timeStamps.append(stock["date"][::])
 		
-		closePrices.append(stock["open"])
+		openPrices.append(stock["open"])
 
-	return stockData, timeStamps, closePrices
+	return stockData, timeStamps, openPrices
 
 
 #Do EMA calculations with the initial data
 def initializeEMA(stockData, periodLen):
 	EMA = []
 
-	closePrices = []
+	openPrices = []
 	for stock in stockData:
-		closePrices.append(stock["open"])
+		openPrices.append(stock["open"])
 
 	#the seed value is used to calculate the first value of each EMA, the seed value is an SMA of the period len in days
 	seedValue = 0
-	for i, price in enumerate(closePrices[:periodLen]):
+	for i, price in enumerate(openPrices[:periodLen]):
 		if i > periodLen - 1:
 			break
 		seedValue += price
 
 	seedValue /= periodLen
 
-	for j, price in enumerate(closePrices[periodLen:]):
+	for j, price in enumerate(openPrices[periodLen:]):
 		#Use seed value for the first ema calculation
 		if(j == 0):
 			newEMA = (price * (2/(periodLen + 1))) + (seedValue * (1 - (2/(periodLen + 1))))
