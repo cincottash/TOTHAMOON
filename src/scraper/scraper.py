@@ -38,6 +38,7 @@ def scraperRun():
 				#if a word is in the body it has less weight
 				tickerScores[word]+=1
 
+	#sort by score
 	tickerScores = sorted(tickerScores.items(), key=lambda x: x[1], reverse=False)
 	for ticker in tickerScores:
 		print(ticker)

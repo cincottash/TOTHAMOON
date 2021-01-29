@@ -11,7 +11,7 @@ def setup():
 	                     user_agent='notabot', \
 	                     username='cincottashThrowAway', \
 	                     password='cincottashThrowAway')
-
+	#holds all the tickers and their scores
 	tickerScores = {
 
 
@@ -23,7 +23,7 @@ def setup():
 	soup = BeautifulSoup(page.content, 'html.parser')
 	reports = soup.findAll("tr", {"class": "tv-data-table__row tv-data-table__stroke tv-screener-table__result-row"})
 
-	#add them to our tickers
+	#add them to our tickerScores dict
 	for report in reports:
 		tickerScores.update({report.a.text.lower():0})
 	
