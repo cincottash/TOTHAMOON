@@ -1,7 +1,8 @@
 import praw
 import prawcore
 import sys
-
+import requests
+from bs4 import BeautifulSoup
 
 def setup():
 
@@ -11,16 +12,21 @@ def setup():
 	                     username='cincottashThrowAway', \
 	                     password='cincottashThrowAway')
 
-
 	tickerScores = {
-		"gme":0,
-		"msft":0,
-		"bb":0,
-		"nok":0
 
 
 	}
 
+	#get the 100  most popular stock tickers of the week 
+	URL = 'https://www.tradingview.com/markets/stocks-usa/market-movers-active/'
+	page = requests.get(URL)
+	soup = BeautifulSoup(page.content, 'html.parser')
+	reports = soup.findAll("tr", {"class": "tv-data-table__row tv-data-table__stroke tv-screener-table__result-row"})
+
+	#add them to our tickers
+	for report in reports:
+		tickerScores.update({report.a.text.lower():0})
+	
 	#list of chars to filter out from words
 	invalidChars = ["$", ",", "."]
 
