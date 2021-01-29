@@ -24,8 +24,7 @@ def getIndicator():
 			if(indicatorType > 0 and indicatorType < 4):
 				validInput = True
 			else:
-				print("Invalid input")
-				time.sleep(1)
+				raise ValueError
 				
 		except ValueError:
 			print("Invalid input")
